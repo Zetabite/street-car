@@ -1,0 +1,6 @@
+require('prototypes.entity.entities')
+require('prototypes.entity.street-pictures')
+require('prototypes.technology.technology')
+require('prototypes.item.item-groups')
+require('prototypes.item.item')
+require('prototypes.recipe.recipe')

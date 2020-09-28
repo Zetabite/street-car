@@ -1,0 +1,11 @@
+{
+    "name": "street-car",
+    "version": "0.1.0",
+    "title": "Street Car",
+    "author": "Zetabite",
+    "factorio_version": "0.18",
+    "dependencies": [
+        "base >= 0.18"
+    ],
+    "description": "EN: Based on an idea from an user on my rail car mod. Adds streets and a street car. Due to lack of graphics skill, this mod reuses factorio assets.\n DE: Basiert auf die Idee eines Benutzers für meine Rail Car mod. Fügt Straßen und ein Straßenauto hinzu. Weil Ich keine eigenen Grafiken erstellen kann, benutze Ich Texturen von Factorio."
+}
