@@ -1,18 +1,20 @@
 function built_entity(event)
-	local entity = event.created_entity
-	if entity.type == 'locomotive' then
-		if not allowed_placement(entity) then
-			local item = entity.name
-			local player = game.get_player(event.player_index)
-			local inventory = player.get_main_inventory()
-			inventory.insert({name = item, count = 1})
-			inventory.sort_and_merge()
-			entity.destroy()
+	local entity = event.created_entity or event.entity
+	if entity and entity.valid then
+		if entity.type == 'locomotive' then
+			if not allowed_street_car_placement(entity) then
+				local item = entity.name
+				local player = game.get_player(event.player_index)
+				local inventory = player.get_main_inventory()
+				inventory.insert({name = item, count = 1})
+				inventory.sort_and_merge()
+				entity.destroy()
+			end
 		end
 	end
 end
 
-function allowed_placement(entity)
+function allowed_street_car_placement(entity)
 	local position = entity.position
 	local surface = entity.surface
 	local name = entity.name

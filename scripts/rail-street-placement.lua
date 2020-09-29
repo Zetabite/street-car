@@ -27,21 +27,23 @@ local placements = {
 }
 
 function built_entity(event)
-	local entity = event.created_entity
-	local item = rails_streets[entity.name]
-	if item then
-		if not allowed_placement(entity) then
-			local player = game.get_player(event.player_index)
-			local inventory = player.get_main_inventory()
-			local count = get_amount(entity.type)
-			inventory.insert({name = item, count = count})
-			inventory.sort_and_merge()
-			entity.destroy()
+	local entity = event.created_entity or event.entity
+	if entity and entity.valid then
+		local item = rails_streets[entity.name]
+		if item then
+			if not allowed_rail_placement(entity) then
+				local player = game.get_player(event.player_index)
+				local inventory = player.get_main_inventory()
+				local count = get_amount(entity.type)
+				inventory.insert({name = item, count = count})
+				inventory.sort_and_merge()
+				entity.destroy()
+			end
 		end
 	end
 end
 
-function allowed_placement(entity)
+function allowed_rail_placement(entity)
 	local target = 'rail'
 	if string.match(entity.name, 'rail') then
 		target = 'street'
